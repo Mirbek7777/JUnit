@@ -1,4 +1,4 @@
-import org.hamcrest.collection.IsMapContaining;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -51,10 +50,11 @@ class PhoneBookTestsWithHamcrest {
     }
 
     @Test
-    void getContactWithHamcrest() {
-        /*
-        Подскажите пожалуйста, не пойму почему тест проваливается...
-         */
-        assertThat(map, hasValue("Леха"));
+     void getContactWithHamcrest() {
+        map.get("Друзья").add("Петруха");
+        List<String> list = map.get("Друзья");
+
+        assertThat(list, contains( "Леха", "Петруха"));
+
     }
 }
