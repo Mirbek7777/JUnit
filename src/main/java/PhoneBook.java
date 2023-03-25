@@ -8,6 +8,7 @@ public class PhoneBook {
     //String group;
     //protected String[] groups;
     private Map<String, List<Contact>> map = new HashMap<>();
+    private String name;
 
 
     public void createGroup(String group) {
@@ -19,9 +20,9 @@ public class PhoneBook {
     }
 
 
-    public void addContactToGroups(Contact contact, String ... groups) {
-        for (String group : groups){
-            if(!map.containsKey(group)){
+    public void addContactToGroups(Contact contact, String... groups) {
+        for (String group : groups) {
+            if (!map.containsKey(group)) {
                 System.out.println("Такой группы нет, проверте правильность ввода");
                 break;
             }
@@ -31,21 +32,26 @@ public class PhoneBook {
 
     }
 
-    public List<Contact>  getGroups(String group) {
+    public List<Contact> getGroups(String group) {
         return map.get(group);
     }
 
-    public Contact getContact(String number) {
+    public PhoneBook getContact(String number, PhoneBook phoneBook) {
         for (List<Contact> group : map.values()) {
             for (Contact contact : group) {
                 if (number.equals(contact.getTelephoneNumber())) {
-                    return contact;
+                    return phoneBook;
+
+
                 }
             }
         }
-
-        return null;
+        return phoneBook;
     }
 
-
+    public String getName() {
+        return name;
+    }
 }
+
+

@@ -33,6 +33,7 @@ public class ContactTestsWithHamcrest {
     public void testGetNameWithHamcrest() {
         String expected = "Доставка еды";
 
+
         assertThat(expected, equalTo(sut.getName()));
     }
 
@@ -43,6 +44,7 @@ public class ContactTestsWithHamcrest {
 
     @Test
     public void testSetNameWithHamcrest() {
+
         String expected = "Суши";
 
         assertThat(expected, equalTo(sut.setName("Суши")));

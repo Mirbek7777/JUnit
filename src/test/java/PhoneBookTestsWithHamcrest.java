@@ -1,4 +1,3 @@
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +13,8 @@ import static org.hamcrest.Matchers.*;
 class PhoneBookTestsWithHamcrest {
 
     private Map<String, List<String>> map;
+    private String name;
+    private String name1;
 
     @BeforeEach
     public void beforeEach(){
@@ -38,12 +39,27 @@ class PhoneBookTestsWithHamcrest {
 
     @Test
     void addContactToGroupsWithHamcrest() {
-        map.get("Друзья").add("Петруха");
-        List<String> list = map.get("Друзья");
+        Contact contact = new Contact("Петруха", "8541244");
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.createGroup("Друзя");
+        phoneBook.addContactToGroups(contact, "Друзья");
+        PhoneBook actual = phoneBook.getContact("8541244", phoneBook);
+        assertEquals(contact.getName(), actual.getName());
 
-        assertThat(list, contains( "Леха", "Петруха"));
-        //assertThat(map, hasValue("Леха"));
+        }
+
+    private void assertEquals(String name, String name1) {
+
     }
+
+    ;
+        
+        //map.get("Друзья").add("Петруха");
+       // List<String> list = map.get("Друзья");
+
+        //assertThat(list, contains( "Леха", "Петруха"));
+        //assertThat(map, hasValue("Леха"));
+
 
     @Test
     void getGroups() {

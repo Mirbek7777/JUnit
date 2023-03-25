@@ -45,12 +45,22 @@ class PhoneBookTests {
 
     @Test
     void testAddContactToGroups() {
-        String[] expected = new String[]{"Леха","Петруха"};
+        Contact contact = new Contact("Петруха", "8541244");
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.createGroup("Друзя");
+        phoneBook.addContactToGroups(contact, "Друзья");
+        PhoneBook actual = phoneBook.getContact("8541244", phoneBook);
+        assertEquals(contact.getName(), actual.getName());
 
-        map.get("Друзья").add("Петруха");
-        String[] result = map.get("Друзья").toArray(new String[0]);
 
-        assertArrayEquals(expected, result);
+
+
+        //String[] expected = new String[]{"Леха","Петруха"};
+
+        //map.get("Друзья").add("Петруха");
+       // String[] result = map.get("Друзья").toArray(new String[0]);
+
+        //assertArrayEquals(expected, result);
     }
 
 

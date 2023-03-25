@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,11 +9,18 @@ import java.util.TreeMap;
 
 public class MissedCallsTests {
 
+
     @Test
     public void testAddMissedCalls(){
-        Map<LocalDateTime, String> test = new TreeMap<>();
-        test.put(LocalDateTime.now(), "8-916-226-21-22");
+        PhoneBook phoneBook = new PhoneBook();
+        MissedCalls missedCalls = new MissedCalls(phoneBook);
+        missedCalls.addMissedCalls("1122");
+        PhoneBook actual = missedCalls.getContact("1122");
+        assertEquals(missedCalls.getName(), actual.getName());
 
-        assertNotNull(test);
+        //Map<LocalDateTime, String> test = new TreeMap<>();
+        //test.put(LocalDateTime.now(), "8-916-226-21-22");
+
+        //assertNotNull(test);
     }
 }

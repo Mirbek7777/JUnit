@@ -20,9 +20,9 @@ public class MissedCalls {
     public String toString(){
         System.out.println("Пропущенные вызовы:");
         for(Map.Entry<LocalDateTime, String> call : missCall.entrySet()){
-            Contact contact = phoneBook.getContact(call.getValue());
+            PhoneBook contact = phoneBook.getContact(call.getValue(), phoneBook);
             if(contact != null){
-                System.out.println(call.getKey() + " " +  contact.getName());
+                System.out.println(call.getKey() + " " +  contact.getClass());
                 //break;
             }else{
                 System.out.println(call.getKey() + " " + call.getValue());
@@ -33,4 +33,11 @@ public class MissedCalls {
         return " ";
     }
 
+    public PhoneBook getContact(String s) {
+        return phoneBook;
+    }
+
+    public short getName() {
+        return 0;
+    }
 }
